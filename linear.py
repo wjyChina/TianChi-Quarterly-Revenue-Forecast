@@ -4,12 +4,12 @@ import math
 import numpy as np
 import matplotlib.pyplot as plt
 
-#格式处理
+#clear the data form
 def spl(a):
     b=a.split('-')
     return int(b[0]+b[1]+b[2])
 
-# 准确率
+# compute accuracy
 def accuracy(forecaste,true):
     b=min(abs(forecaste/true-1),0.8)
     return b
@@ -43,7 +43,7 @@ def get_data(index_1):
     copy=pd.DataFrame(columns=["TICKER_SYMBOL","PUBLISH_DATE","END_DATE",'REPORT_TYPE','REVENUE'])
     copy=copy.append(train,ignore_index=True)
 
-    #保存原始数据
+    #preserve the original data
     origin=copy.copy()
     # print("origin\n",origin)
     g = origin.loc[origin['REPORT_TYPE'] == 'S1']
@@ -54,7 +54,7 @@ def get_data(index_1):
     return gro, origin, copy
 
 def get_groupdata(copy):
-    #建立linear数据
+    #construct the data for linear regression
     i = 0
     while i<len(copy)-1:
         j=i+3
@@ -122,7 +122,7 @@ def get_growth(gro,origin):
 
 b=0
 flag=0
-devide=1000000   #单位百万
+devide=1000000   #data unit is million
 result=pd.DataFrame(columns=['TICKER_SYMBOL','REVENUE'])
 for i in data_2['ticket']:
 # for i in [1,5,6,9]:

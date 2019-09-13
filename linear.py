@@ -90,6 +90,7 @@ def get_linear(df,copy,origin):
     # print(acu,forecast)
     return forecast,acu
 
+#linear regression by sum of group(4 seasons)
 def get_linear_S1(gro,origin):
     test = len(gro)
     t=len(origin)
@@ -101,6 +102,7 @@ def get_linear_S1(gro,origin):
     acu=accuracy(preforecast,origin.loc[t-4,'REVENUE'])
     return forecast,acu
 
+#linear regression by the growth rate of group sum
 def get_growth(gro,origin):
     test = len(gro)
     t = len(origin)
